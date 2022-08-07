@@ -6,7 +6,7 @@ from aiogram.types import Message
 from api import session_manager
 
 storage = MemoryStorage()
-bot = Bot(token='5152791752:AAEEzx6yVn2V7JdAV-GpLVcE5VEaCewATb8', parse_mode='html')
+bot = Bot(token='token', parse_mode='html')
 dp = Dispatcher(bot, storage=storage)
 Api = session_manager.YandexTTS()
 
