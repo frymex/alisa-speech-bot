@@ -25,7 +25,7 @@ def re_speech(text: str) -> types.InlineKeyboardMarkup:
 
 @dp.message_handler()
 async def t_audio(msg: Message):
-    x = await Api.send_tts(msg.text, format=session_manager.Formats.MP3)
+    x = await Api.send_tts(msg.text, format=session_manager.Formats.OGGOPUS)
     if x[0]:
         await msg.answer_audio(x, reply_markup=re_speech(msg.text))
     else:
