@@ -5,10 +5,6 @@ import pyglet
 from aiohttp import ClientSession
 from .random_manager import Randomus
 
-from pydub import AudioSegment
-from pydub.playback import play
-
-
 class Languages:
     ru = 'ru-RU'
     en = 'en-US'
