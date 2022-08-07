@@ -15,28 +15,13 @@ async def start(msg: Message):
     await msg.answer('Введите любой текст, алиса озвучит его')
 
 
-def re_speech(text: str) -> types.InlineKeyboardMarkup:
-    return types.InlineKeyboardMarkup(inline_keyboard=[
-        [
-            types.InlineKeyboardButton(text='🔄 Повторить', callback_data=f'respeech|{text}')
-        ]
-    ])
-
-
 @dp.message_handler()
 async def t_audio(msg: Message):
     x = await Api.send_tts(msg.text, format=session_manager.Formats.OGGOPUS)
     if x[0]:
-        await msg.answer_audio(x, reply_markup=re_speech(msg.text))
+        await msg.answer_audio(x)
     else:
         await msg.answer(f'<code>{x[1]}</>')
-
-
-@dp.callback_query_handler(text_startswith='respeech|')
-async def respeech_call(call: types.CallbackQuery):
-    text = call.data.split('|')[1]
-    x = await Api.send_tts(text)
-    await call.message.edit_media()
 
 
 
