@@ -19,7 +19,7 @@ async def start(msg: Message):
 async def t_audio(msg: Message):
     x = await Api.send_tts(msg.text, format=session_manager.Formats.OGGOPUS)
     if x[0]:
-        await msg.answer_audio(x)
+        await msg.answer_voice(x)
     else:
         await msg.answer(f'<code>{x[1]}</>')
 
