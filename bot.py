@@ -17,11 +17,11 @@ async def start(msg: Message):
 
 @dp.message_handler()
 async def t_audio(msg: Message):
-    x = await Api.send_tts(msg.text, format=session_manager.Formats.OGGOPUS)
-    if x[0]:
-        await msg.answer_voice(x)
+    response = await Api.send_tts(msg.text, format=session_manager.Formats.OGGOPUS)
+    if response[0]:
+        await msg.answer_voice(response)
     else:
-        await msg.answer(f'<code>{x[1]}</>')
+        await msg.answer(f'<code>{response[1]}</>')
 
 
 
